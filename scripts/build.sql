@@ -22,6 +22,7 @@ CREATE TABLE invoice (
     last_changed_by_user_id bigserial NULL,
     last_changed_on timestamp NULL
 
+    PRIMARY KEY (id, invoice_number)
 
 
 );
