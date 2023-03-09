@@ -18,9 +18,9 @@ CREATE TABLE invoice (
     amws_id bigserial NOT NULL,
     generated_by_user_id bigserial NOT NULL,
     generated_on timestamp NOT NULL,
-    last_change_made_id bigserial,
-    last_changed_by_user_id bigserial,
-    last_changed_on timestamp
+    last_change_made_id bigserial NULL,
+    last_changed_by_user_id bigserial NULL,
+    last_changed_on timestamp NULL
 
 
 
