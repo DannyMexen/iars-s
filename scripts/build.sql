@@ -7,20 +7,20 @@ Description: Build script for IaRS-SE. It contains CREATE statements for a fully
 VERSION: 0.1.0
 */
 CREATE TABLE invoice (
-    id,
-    invoice_number,
-    total_amount,
-    payment_condition_id,
-    bank_id,
-    issue_date,
-    due_date,
-    client_id,
-    amws_id,
-    generated_by_user_id,
-    generated_on,
-    last_change_made_id,
-    last_changed_by_user_id,
-    last_changed_on
+    id bigserial,
+    invoice_number text,
+    total_amount money,
+    payment_condition_id bigserial,
+    bank_id bigserial,
+    issue_date timestamp,
+    due_date timestamp,
+    client_id bigserial,
+    amws_id bigserial,
+    generated_by_user_id bigserial,
+    generated_on timestamp,
+    last_change_made_id bigserial,
+    last_changed_by_user_id bigserial,
+    last_changed_on timestamp
 
 
 
