@@ -20,7 +20,7 @@ CREATE TABLE invoice (
     generated_on timestamp NOT NULL,
     last_change_made_id bigserial NULL,
     last_changed_by_user_id bigserial NULL,
-    last_changed_on timestamp NULL
+    last_changed_on timestamp NULL,
 
     PRIMARY KEY (id, invoice_number)
 
