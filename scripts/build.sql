@@ -7,6 +7,33 @@ Description: Build script for IaRS-SE. It contains CREATE statements for a fully
 VERSION: 0.1.0
 */
 
+/*
+    Creation Order (attempts to address relationships)
+    -- A. Stand-alone
+    1. notification
+    2. change_reason
+    -- B. Logs
+    1. event
+    2. log
+    -- C. Users
+    1. role
+    2. user_department
+    3. user_account_status
+    4. user_account
+    5. user_person
+    -- D. Organizations
+    1. province
+    2. city
+    3. amws
+    -- E. Invoices and Receipts
+    1. bank
+    2. condition
+    3. invoice
+    4. service
+    5. invoice_item
+    6. receipt_item
+    7. receipt
+*/
 
 CREATE TABLE IF NOT EXISTS invoice (
     id bigserial,
