@@ -24,7 +24,8 @@ VERSION: 0.1.0
     -- D. Organizations
     1. province
     2. city
-    3. amws
+    3. client
+    4. amws
     -- E. Invoices and Receipts
     1. bank
     2. condition
