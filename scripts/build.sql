@@ -36,6 +36,19 @@ VERSION: 0.1.0
     7. receipt
 */
 
+-- A. STANDALONE TABLES (No relationships)
+/*  1.  notification
+        messages sent to users at key moments
+    2.  change_reason
+        reasons for altering records
+*/
+CREATE TABLE IF NOT EXISTS notification (
+    id bigserial PRIMARY KEY,
+    name text,
+    description text
+);
+
+
 CREATE TABLE IF NOT EXISTS invoice (
     id bigserial,
     invoice_number text,
