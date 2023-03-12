@@ -51,10 +51,6 @@ CREATE SCHEMA IF NOT EXISTS simple;
 SET search_path  TO simple;
 
 
-
-
-
-
 -- A. STANDALONE TABLES (No relationships)
 /*  1.  notification
         messages sent to users at key moments
@@ -63,11 +59,17 @@ SET search_path  TO simple;
 */
 CREATE TABLE IF NOT EXISTS simple.notification (
     id bigserial PRIMARY KEY,
-    name text,
-    description text
+    name text NOT NULL UNIQUE,
+    description text NOT NULL
 );
 
+CREATE TABLE IF NOT EXISTS simple.change_reason (
+    id bigserial PRIMARY KEY,
+    name text NOT NULL UNIQUE,
+    description text NOT NULL
+);
 
+-- E.   Invoices and Receipts
 CREATE TABLE IF NOT EXISTS simple.invoice (
     id bigserial,
     invoice_number text,
