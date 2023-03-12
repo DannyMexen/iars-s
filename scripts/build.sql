@@ -37,9 +37,20 @@ VERSION: 0.1.0
 */
 
 /*
+    Schema search path - see PostgreSQL documentation for details
+    https://www.postgresql.org/docs/current/ddl-schemas.html#DDL-SCHEMAS-CREATE  
+*/
+CREATE SCHEMA IF NOT EXISTS simple;
+SET search_path  TO simple;
+
+
+/*
     WARNING: DELETE THIS SECTION
 */
-DROP TABLE IF EXISTS notification, change_reason, invoice;
+DROP TABLE IF EXISTS simple.notification, simple.change_reason, simple.invoice;
+
+
+
 
 -- A. STANDALONE TABLES (No relationships)
 /*  1.  notification
@@ -47,14 +58,14 @@ DROP TABLE IF EXISTS notification, change_reason, invoice;
     2.  change_reason
         reasons for altering records
 */
-CREATE TABLE IF NOT EXISTS notification (
+CREATE TABLE IF NOT EXISTS simple.notification (
     id bigserial PRIMARY KEY,
     name text,
     description text
 );
 
 
-CREATE TABLE IF NOT EXISTS invoice (
+CREATE TABLE IF NOT EXISTS simple.invoice (
     id bigserial,
     invoice_number text,
     total_amount money NOT NULL,
