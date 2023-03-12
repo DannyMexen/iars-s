@@ -36,6 +36,11 @@ VERSION: 0.1.0
     7. receipt
 */
 
+/*
+    WARNING: DELETE THIS SECTION
+*/
+DROP TABLE IF EXISTS notification, change_reason, invoice;
+
 -- A. STANDALONE TABLES (No relationships)
 /*  1.  notification
         messages sent to users at key moments
