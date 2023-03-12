@@ -37,6 +37,13 @@ VERSION: 0.1.0
 */
 
 /*
+    WARNING: DELETE THIS SECTION
+*/
+DROP TABLE IF EXISTS simple.notification, simple.change_reason, simple.invoice;
+DROP SCHEMA IF EXISTS simple;
+
+
+/*
     Schema search path - see PostgreSQL documentation for details
     https://www.postgresql.org/docs/current/ddl-schemas.html#DDL-SCHEMAS-CREATE  
 */
@@ -44,10 +51,6 @@ CREATE SCHEMA IF NOT EXISTS simple;
 SET search_path  TO simple;
 
 
-/*
-    WARNING: DELETE THIS SECTION
-*/
-DROP TABLE IF EXISTS simple.notification, simple.change_reason, simple.invoice;
 
 
 
