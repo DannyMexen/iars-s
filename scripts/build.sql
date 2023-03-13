@@ -107,7 +107,7 @@ CREATE TABLE IF NOT EXISTS simple.user (
     password_hash text NOT NULL,
     user_account_status_id bigint REFERENCES simple.user_account_status (id),
     department_id bigint NOT NULL REFERENCES simple.user_department (id),
-    employee_number text NOT NULL UNIQUE,
+    employee_number text,
     user_role_id bigint NOT NULL REFERENCES simple.user_role (id),
     first_name text NOT NULL,
     last_name text NOT NULL,
