@@ -105,10 +105,10 @@ CREATE TABLE IF NOT EXISTS simple.user (
     id bigserial,
     user_name text, 
     password_hash text NOT NULL,
-    user_account_status_id bigint REFEENCES simple.user_account_status (id),
-    department_id bigint NOT NULL REFEENCES simple.user_department (id),
+    user_account_status_id bigint REFERENCES simple.user_account_status (id),
+    department_id bigint NOT NULL REFERENCES simple.user_department (id),
     employee_number text NOT NULL,
-    user_role_id bigint NOT NULL REFEENCES simple.user_role (id),
+    user_role_id bigint NOT NULL REFERENCES simple.user_role (id),
     first_name text NOT NULL,
     last_name text NOT NULL,
     phone_number text NOT NULL UNIQUE,
@@ -126,7 +126,7 @@ CREATE TABLE IF NOT EXISTS simple.event (
 CREATE TABLE IF NOT EXISTS simple.log (
     id bigserial PRIMARY KEY,
     event_id bigint REFERENCES simple.event (id),
-    user_person_id bigint REFEENCES simple.user (id),
+    user_person_id bigint REFERENCES simple.user (id),
     date timestamp DEFAULT CURRENT_TIMESTAMP,
     details text
 );
