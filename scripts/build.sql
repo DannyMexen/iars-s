@@ -219,6 +219,6 @@ CREATE TABLE IF NOT EXISTS simple.invoice_item (
     due_date date NOT NULL,
     issue_date date DEFAULT CURRENT_DATE NOT NULL,
 
-    PRIMARY KEY (id, item_number)
+    PRIMARY KEY (id, item_number),
     FOREIGN KEY (invoice_id, invoice_number) REFERENCES simple.invoice (id, invoice_number)
 );
