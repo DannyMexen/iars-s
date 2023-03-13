@@ -41,11 +41,8 @@ Notes:  For best results
 
 -- Uncomment this section to start with new database, schema and tables.
 /*
-   Place the code below here 
-DROP TABLE IF EXISTS simple.notification, simple.change_reason, simple.invoice;
-DROP SCHEMA IF EXISTS simple;
+   <Place the code below here to prevent execution>
 */
--- connect to any other database of your choice to accommodate DROP statement below (is this a hack?)
 \connect postgres
 DROP DATABASE IF EXISTS iars_test;
 
