@@ -42,6 +42,7 @@ VERSION: 0.1.0
 */
 DROP TABLE IF EXISTS simple.notification, simple.change_reason, simple.invoice;
 DROP SCHEMA IF EXISTS simple;
+\connect postgres -- connect to any other database of your choice
 DROP DATABASE IF EXISTS iars_test;
 
 /*
