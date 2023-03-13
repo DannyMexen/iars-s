@@ -165,7 +165,7 @@ CREATE TABLE IF NOT EXISTS simple.bank_account_type (
 CREATE TABLE IF NOT EXISTS simple.bank (
     id bigserial PRIMARY KEY,
     name text NOT NULL,
-    account_type_id bigint NOT NULL REFERENCES bank_account_type (id),
+    account_type_id bigint NOT NULL REFERENCES simple.bank_account_type (id),
     swift_code text NOT NULL UNIQUE,
     branch_name text NOT NULL
 );
@@ -188,19 +188,12 @@ CREATE TABLE IF NOT EXISTS simple.invoice (
     id bigserial,
     invoice_number text,
     total_amount money NOT NULL,
-    payment_condition_id bigserial NOT NULL,
-    bank_id bigint NOT NULL,
+    payment_condition_id bigserial NOT NULL REFERENCES simple.payment_condition (id),
+    bank_id bigint NOT NULL REFERENCES simple.bank (id),
     issue_date timestamp NOT NULL,
     due_date timestamp NOT NULL,
-    client_id bigint NOT NULL,
-    amws_id bigint NOT NULL,
-    generated_by_user_id bigserial NOT NULL,
-    generated_on timestamp NOT NULL,
-    last_change_made_id bigint NULL,
-    last_changed_by_user_id bigint NULL,
-    last_changed_on timestamp NULL,
+    client_id bigint NOT NULL REFERENCES simple.client (id),
+    amws_id bigint NOT NULL REFERENCES simple.amws (id),
 
     PRIMARY KEY (id, invoice_number)
-
-
 );
