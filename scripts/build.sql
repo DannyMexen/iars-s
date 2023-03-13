@@ -139,6 +139,18 @@ CREATE TABLE IF NOT EXISTS simple.city (
     province_id bigint REFERENCES simple.province (id)
 );
 
+CREATE TABLE IF NOT EXISTS simple.client (
+    id bigserial PRIMARY KEY,
+    name text NOT NULL,
+    street text NOT NULL,
+    area text NOT NULL,
+    city_id bigint REFERENCES simple.city (id),
+    contact_first_name text NOT NULL,
+    contact_last_name text NOT NULL,
+    contact_email text NOT NULL UNIQUE,
+    contact_phone_number text NOT NULL UNIQUE
+);
+
 -- E.   Invoices and Receipts
 CREATE TABLE IF NOT EXISTS simple.invoice (
     id bigserial,
