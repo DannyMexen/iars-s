@@ -255,7 +255,7 @@ CREATE TABLE IF NOT EXISTS simple.receipt (
     invoice_id bigint NOT NULL,
     invoice_number text NOT NULL,
     paid_date date NOT NULL,
-    issue_date date DEFAULT CURRENT_DATE NOT_NULL,
+    issue_date date DEFAULT CURRENT_DATE NOT NULL,
 
     PRIMARY KEY (id, receipt_number),
     FOREIGN KEY (invoice_id, invoice_number) REFERENCES simple.invoice (id, invoice_number) 
