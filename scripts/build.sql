@@ -89,6 +89,12 @@ CREATE TABLE IF NOT EXISTS simple.role (
     description text
 );
 
+CREATE TABLE IF NOT EXISTS simple.user_department (
+    id bigserial PRIMARY KEY,
+    name text,
+    description
+);
+
 -- C.   LOG AND EVENTS
 CREATE TABLE IF NOT EXISTS simple.event (
     id bigserial PRIMARY KEY,
