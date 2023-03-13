@@ -80,6 +80,13 @@ CREATE TABLE IF NOT EXISTS simple.change_reason (
     description text NOT NULL
 );
 
+-- B.   LOG AND EVENTS
+CREATE TABLE IF NOT EXISTS simple.event (
+    id bigserial PRIMARY KEY,
+    name text,
+    description text
+);
+
 -- E.   Invoices and Receipts
 CREATE TABLE IF NOT EXISTS simple.invoice (
     id bigserial,
