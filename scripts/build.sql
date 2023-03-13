@@ -124,10 +124,16 @@ CREATE TABLE IF NOT EXISTS simple.log (
     details text
 );
 
+-- D.   ORGANIZATIONS
+CREATE TABLE IF NOT EXISTS simple.province (
+    id bigserial PRIMARY KEY,
+    name text NOT NULL UNIQUE
+);
+
 -- E.   Invoices and Receipts
 CREATE TABLE IF NOT EXISTS simple.invoice (
-    id bigserial,
-    invoice_number text,
+    id bigserial UNIQUE NOT NULL,
+    invoice_number text UNIQUE NOT NULL,
     total_amount money NOT NULL,
     payment_condition_id bigserial NOT NULL,
     bank_id bigint NOT NULL,
