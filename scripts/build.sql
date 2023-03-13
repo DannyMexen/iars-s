@@ -98,7 +98,7 @@ CREATE TABLE IF NOT EXISTS simple.user_account_status (
 
 CREATE TABLE IF NOT EXISTS simple.user (
     id bigserial,
-    username text, 
+    username text NOT NULL UNIQUE, 
     password_hash text NOT NULL,
     user_account_status_id bigint REFERENCES simple.user_account_status (id),
     user_role_id bigint REFERENCES simple.user_role (id),
@@ -138,8 +138,8 @@ CREATE TABLE IF NOT EXISTS simple.city (
 
 -- E.   Invoices and Receipts
 CREATE TABLE IF NOT EXISTS simple.invoice (
-    id bigserial UNIQUE NOT NULL,
-    invoice_number text UNIQUE NOT NULL,
+    id bigserial,
+    invoice_number text,
     total_amount money NOT NULL,
     payment_condition_id bigserial NOT NULL,
     bank_id bigint NOT NULL,
