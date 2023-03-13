@@ -47,7 +47,7 @@ DROP DATABASE IF EXISTS iars_test;
 /*
     Database creation and connection
 */
-CREATE DATABASE IF NOT EXISTS iars_test;
+CREATE DATABASE iars_test;
 \connect iars_test
 
 /*
