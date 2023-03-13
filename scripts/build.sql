@@ -83,7 +83,7 @@ CREATE TABLE IF NOT EXISTS simple.change_reason (
 );
 
 -- B.   USERS
-CREATE TABLE IF NOT EXISTS simple.role (
+CREATE TABLE IF NOT EXISTS simple.user_role (
     id bigserial PRIMARY KEY,
     name text DEFAULT 'STANDARD' UNIQUE,
     description text NOT NULL UNIQUE
@@ -99,6 +99,11 @@ CREATE TABLE IF NOT EXISTS simple.user_account_status (
     id bigserial PRIMARY KEY,
     name text DEFAULT 'ACTIVE' UNIQUE,
     description NOT NULL UNIQUE
+);
+
+CREATE TABLE IF NOT EXISTS simple.user_account (
+    id bigserial PRIMARY KEY,
+    user_name text NOT NULL 
 );
 
 -- C.   LOG AND EVENTS
