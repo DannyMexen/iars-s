@@ -6,10 +6,12 @@ Description: Build script for IaRS-SE. It contains CREATE statements for a fully
              relational schema to store invoicing and receipting data
 VERSION: 0.1.0
 Notes:  For best results
-        1. Run this in psql environment
-        2. postgres (default database) is a convenience (see DROP statements below)
-        3. Permissions and privileges are left to you. Please review the link below
+        1.  Run this in psql environment
+        2.  postgres (default database) is a convenience (see DROP statements below)
+        3.  Permissions and privileges are left to you. Please review the link below
             https://www.postgresql.org/docs/15/index.html
+        4.  If you're using VSCode, consider using Better Comments extension (no affiliation to project)
+            It highlights certain sections of interest
 */
 
 /*
@@ -41,7 +43,7 @@ Notes:  For best results
     7. receipt
 */
 
--- Uncomment this section to start with new database, schema and tables.
+-- ! Uncomment this section to start with new database, schema and tables.
 /*
    <Place the code below here to prevent execution>
 */
@@ -78,6 +80,13 @@ CREATE TABLE IF NOT EXISTS simple.change_reason (
     id bigserial PRIMARY KEY,
     name text NOT NULL UNIQUE,
     description text NOT NULL
+);
+
+-- B.   USERS
+CREATE TABLE IF NOT EXISTS simple.role (
+    id bigserial PRIMARY KEY,
+    name text,
+    description text
 );
 
 -- C.   LOG AND EVENTS
