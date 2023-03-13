@@ -73,11 +73,11 @@ SET search_path  TO simple;
 CREATE TABLE IF NOT EXISTS simple.notification (
     id bigserial PRIMARY KEY,
     name text NOT NULL UNIQUE,
-    description text NOT NULL
+    description text NOT NULL,
 );
 
 CREATE TABLE IF NOT EXISTS simple.change_reason (
-    id bigserial PRIMARY KEY,
+    id bigserial PRIMARY KEY ,
     name text NOT NULL UNIQUE,
     description text NOT NULL
 );
@@ -101,9 +101,17 @@ CREATE TABLE IF NOT EXISTS simple.user_account_status (
     description NOT NULL UNIQUE
 );
 
-CREATE TABLE IF NOT EXISTS simple.user_account (
+CREATE TABLE IF NOT EXISTS simple.user (
     id bigserial PRIMARY KEY,
-    user_name text NOT NULL 
+    user_name text NOT NULL UNIQUE,
+    password_hash text NOT NULL,
+    user_account_status_id bigint REFEENCES simple.user_account_status (id),
+    department_id bigint NOT NULL REFEENCES simple.user_department (id),
+    employee_number text NOT NULL,
+    user_role_id bigint NOT NULL REFEENCES simple.user_role (id),
+    first_name text NOT NULL,
+    last_name text NOT NULL,
+    phone_number text NOT NULL UNIQUE,
 );
 
 -- C.   LOG AND EVENTS
