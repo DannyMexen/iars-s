@@ -45,7 +45,7 @@ Notes:  For best results
 /*
    <Place the code below here to prevent execution>
 */
-SET client_min_messages=WARNING;
+SET client_min_messages TO INFO;
 \connect postgres
 DROP DATABASE IF EXISTS iars_test;
 
