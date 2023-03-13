@@ -102,8 +102,8 @@ CREATE TABLE IF NOT EXISTS simple.user_account_status (
 );
 
 CREATE TABLE IF NOT EXISTS simple.user (
-    id bigserial PRIMARY KEY,
-    user_name text NOT NULL UNIQUE,
+    id bigserial,
+    user_name text, 
     password_hash text NOT NULL,
     user_account_status_id bigint REFEENCES simple.user_account_status (id),
     department_id bigint NOT NULL REFEENCES simple.user_department (id),
@@ -112,6 +112,8 @@ CREATE TABLE IF NOT EXISTS simple.user (
     first_name text NOT NULL,
     last_name text NOT NULL,
     phone_number text NOT NULL UNIQUE,
+
+    PRIMARY KEY (id, username)
 );
 
 -- C.   LOG AND EVENTS
