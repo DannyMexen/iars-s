@@ -151,6 +151,10 @@ CREATE TABLE IF NOT EXISTS simple.client (
     contact_phone_number text NOT NULL UNIQUE
 );
 
+CREATE TABLE IF NOT EXISTS simple.amws (
+    tpin text
+) INHERITS (client);
+
 -- E.   Invoices and Receipts
 CREATE TABLE IF NOT EXISTS simple.invoice (
     id bigserial,
