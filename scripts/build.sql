@@ -151,9 +151,19 @@ CREATE TABLE IF NOT EXISTS simple.client (
     contact_phone_number text NOT NULL UNIQUE
 );
 
+
 CREATE TABLE IF NOT EXISTS simple.amws (
-    tpin text NOT NULL
-) INHERITS (client);
+    id bigserial PRIMARY KEY,
+    name text NOT NULL,
+    tpin text NOT NULL,
+    street text NOT NULL,
+    area text NOT NULL,
+    city_id bigint NOT NULL REFERENCES simple.city (id),
+    contact_first_name text NOT NULL,
+    contact_last_name text NOT NULL,
+    contact_email text NOT NULL UNIQUE,
+    contact_phone_number text NOT NULL UNIQUE
+);
 
 -- E.   INVOICES AND RECEIPTS
 CREATE TABLE IF NOT EXISTS simple.bank_account_type (
