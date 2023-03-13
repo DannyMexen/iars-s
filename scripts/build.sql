@@ -106,7 +106,7 @@ CREATE TABLE IF NOT EXISTS simple.user (
     last_name text NOT NULL,
     phone_number text NOT NULL UNIQUE,
 
-    PRIMARY KEY (id, username, employee_number)
+    PRIMARY KEY (id, username)
 );
 
 -- C.   LOG AND EVENTS
