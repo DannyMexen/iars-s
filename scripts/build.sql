@@ -130,6 +130,12 @@ CREATE TABLE IF NOT EXISTS simple.province (
     name text NOT NULL UNIQUE
 );
 
+CREATE TABLE IF NOT EXISTS simple.city (
+    id bigserial PRIMARY KEY,
+    name text NOT NULL UNIQUE,
+    province_id bigint REFERENCES simple.province (id)
+);
+
 -- E.   Invoices and Receipts
 CREATE TABLE IF NOT EXISTS simple.invoice (
     id bigserial UNIQUE NOT NULL,
