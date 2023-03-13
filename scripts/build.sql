@@ -170,6 +170,16 @@ CREATE TABLE IF NOT EXISTS simple.bank (
     branch_name text NOT NULL
 );
 
+CREATE TABLE IF NOT EXISTS simple.payment_condition (
+    id bigserial PRIMARY KEY,
+    name text NOT NULL UNIQUE,
+    description text NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS simple.invoice (
+    id bigserial,
+    invoice_number text,
+    total_amount money NOT NULL,
 CREATE TABLE IF NOT EXISTS simple.invoice (
     id bigserial,
     invoice_number text,
