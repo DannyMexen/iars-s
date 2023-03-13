@@ -73,7 +73,7 @@ SET search_path  TO simple;
 CREATE TABLE IF NOT EXISTS simple.notification (
     id bigserial PRIMARY KEY,
     name text NOT NULL UNIQUE,
-    description text NOT NULL,
+    description text NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS simple.change_reason (
@@ -126,7 +126,7 @@ CREATE TABLE IF NOT EXISTS simple.event (
 CREATE TABLE IF NOT EXISTS simple.log (
     id bigserial PRIMARY KEY,
     event_id bigint REFERENCES simple.event (id),
-    user_person_id bigint REFERENCES simple.user (id),
+    user_id bigint REFERENCES simple.user (id),
     date timestamp DEFAULT CURRENT_TIMESTAMP,
     details text
 );
