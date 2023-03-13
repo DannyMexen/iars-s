@@ -180,7 +180,7 @@ CREATE TABLE IF NOT EXISTS simple.payment_condition (
 CREATE TABLE IF NOT EXISTS simple.service (
     id bigserial PRIMARY KEY,
     name text NOT NULL UNIQUE,
-    description text NOT NULL
+    description text NOT NULL,
     cost money NOT NULL
 );
 
