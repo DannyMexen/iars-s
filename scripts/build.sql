@@ -122,7 +122,7 @@ CREATE TABLE IF NOT EXISTS simple.log (
     user_id bigint,
     username text,
     date timestamp DEFAULT CURRENT_TIMESTAMP,
-    details text
+    details text,
 
     FOREIGN KEY (user_id, user_login_name) REFERENCES simple.user (id, login_name)
 );
