@@ -85,20 +85,20 @@ CREATE TABLE IF NOT EXISTS simple.change_reason (
 -- B.   USERS
 CREATE TABLE IF NOT EXISTS simple.role (
     id bigserial PRIMARY KEY,
-    name text,
-    description text
+    name text DEFAULT 'STANDARD' UNIQUE,
+    description text NOT NULL UNIQUE
 );
 
 CREATE TABLE IF NOT EXISTS simple.user_department (
     id bigserial PRIMARY KEY,
-    name text,
-    description
+    name text NOT NULL UNIQUE,
+    description NOT NULL UNIQUE
 );
 
 CREATE TABLE IF NOT EXISTS simple.user_account_status (
     id bigserial PRIMARY KEY,
-    name text,
-    description
+    name text DEFAULT 'ACTIVE' UNIQUE,
+    description NOT NULL UNIQUE
 );
 
 -- C.   LOG AND EVENTS
@@ -114,6 +114,7 @@ CREATE TABLE IF NOT EXISTS simple.log (
     id bigserial PRIMARY KEY,
     event_id bigint REFERENCES simple.event (id),
     user_person_id bigint REFEENCES simple.user_person (id),
+    date timestamp DEFAULT CURRENT_TIMESTAMP,
     details text
 );
 */
