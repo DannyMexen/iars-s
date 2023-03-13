@@ -8,6 +8,8 @@ VERSION: 0.1.0
 Notes:  For best results
         1. Run this in psql environment
         2. postgres (default database) is a convenience (see DROP statements below)
+        3. Permissions and privileges are left to you. Please review the link below
+            https://www.postgresql.org/docs/15/index.html
 */
 
 /*
@@ -43,6 +45,7 @@ Notes:  For best results
 /*
    <Place the code below here to prevent execution>
 */
+SET client_min_messages=WARNING;
 \connect postgres
 DROP DATABASE IF EXISTS iars_test;
 
