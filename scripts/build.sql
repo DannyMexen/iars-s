@@ -121,16 +121,13 @@ CREATE TABLE IF NOT EXISTS simple.event (
     description text
 );
 
--- TODO: Uncomment after user_person table is created
-/*
 CREATE TABLE IF NOT EXISTS simple.log (
     id bigserial PRIMARY KEY,
     event_id bigint REFERENCES simple.event (id),
-    user_person_id bigint REFEENCES simple.user_person (id),
+    user_person_id bigint REFEENCES simple.user (id),
     date timestamp DEFAULT CURRENT_TIMESTAMP,
     details text
 );
-*/
 
 -- E.   Invoices and Receipts
 CREATE TABLE IF NOT EXISTS simple.invoice (
