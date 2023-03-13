@@ -97,8 +97,8 @@ CREATE TABLE IF NOT EXISTS simple.user_account_status (
 );
 
 CREATE TABLE IF NOT EXISTS simple.user (
-    id bigserial,
-    username text, 
+    id bigserial NOT NULL UNIQUE,
+    username text NOT NULL UNIQUE, 
     password_hash text NOT NULL,
     user_account_status_id bigint REFERENCES simple.user_account_status (id),
     user_role_id bigint NOT NULL REFERENCES simple.user_role (id),
