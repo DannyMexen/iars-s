@@ -176,6 +176,14 @@ CREATE TABLE IF NOT EXISTS simple.payment_condition (
     description text NOT NULL
 );
 
+
+CREATE TABLE IF NOT EXISTS simple.service (
+    id bigserial PRIMARY KEY,
+    name text NOT NULL UNIQUE,
+    description text NOT NULL
+    cost money NOT NULL
+);
+
 CREATE TABLE IF NOT EXISTS simple.invoice (
     id bigserial,
     invoice_number text,
