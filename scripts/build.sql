@@ -89,11 +89,6 @@ CREATE TABLE IF NOT EXISTS simple.user_role (
     description text NOT NULL UNIQUE
 );
 
-CREATE TABLE IF NOT EXISTS simple.user_department (
-    id bigserial PRIMARY KEY,
-    name text NOT NULL UNIQUE,
-    description text NOT NULL UNIQUE
-);
 
 CREATE TABLE IF NOT EXISTS simple.user_account_status (
     id bigserial PRIMARY KEY,
@@ -103,11 +98,9 @@ CREATE TABLE IF NOT EXISTS simple.user_account_status (
 
 CREATE TABLE IF NOT EXISTS simple.user (
     id bigserial,
-    username text NOT NULL UNIQUE, 
+    username text, 
     password_hash text NOT NULL,
     user_account_status_id bigint REFERENCES simple.user_account_status (id),
-    department_id bigint NOT NULL REFERENCES simple.user_department (id),
-    employee_number text NOT NULL UNIQUE,
     user_role_id bigint NOT NULL REFERENCES simple.user_role (id),
     first_name text NOT NULL,
     last_name text NOT NULL,
