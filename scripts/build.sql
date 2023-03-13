@@ -216,8 +216,6 @@ CREATE TABLE IF NOT EXISTS simple.invoice_item (
     service_id bigint NOT NULL REFERENCES simple.service (id),
     quantity int NOT NULL,
     total_amount money NOT NULL,
-    due_date date NOT NULL,
-    issue_date date DEFAULT CURRENT_DATE NOT NULL,
 
     PRIMARY KEY (id, item_number),
     FOREIGN KEY (invoice_id, invoice_number) REFERENCES simple.invoice (id, invoice_number)
@@ -236,5 +234,14 @@ CREATE TABLE IF NOT EXISTS simple.receipt (
 );
 
 CREATE TABLE IF NOT EXISTS simple.receipt_item (
+    id bigint,
+    item_number text,
+    receipt_id bigint NOT NULL,
+    receipt_number text NOT NULL,
+    invoice_item_id bigint NOT NULL,
+    invoice_item_number text NOT NULL, 
 
+    PRIMARY KEY (id, item_number),
+    FOREIGN KEY (receipt_id, receipt_number) REFERENCES simple.receipt (id, receipt_number),
+    FOREIGN KEY (invoice_item_id, invoice_item_number) REFERENCES simple.invoice_item (id, item_number)
 );
