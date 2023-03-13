@@ -98,7 +98,7 @@ CREATE TABLE IF NOT EXISTS simple.user_account_status (
 
 CREATE TABLE IF NOT EXISTS simple.user (
     id bigserial,
-    username text NOT NULL UNIQUE, 
+    login_name text, 
     password_hash text NOT NULL,
     user_account_status_id bigint REFERENCES simple.user_account_status (id),
     user_role_id bigint REFERENCES simple.user_role (id),
@@ -106,7 +106,7 @@ CREATE TABLE IF NOT EXISTS simple.user (
     last_name text NOT NULL,
     phone_number text NOT NULL UNIQUE,
 
-    PRIMARY KEY (id, username)
+    PRIMARY KEY (id, login_name)
 );
 
 -- C.   LOG AND EVENTS
@@ -119,9 +119,12 @@ CREATE TABLE IF NOT EXISTS simple.event (
 CREATE TABLE IF NOT EXISTS simple.log (
     id bigserial PRIMARY KEY,
     event_id bigint REFERENCES simple.event (id),
-    user_id bigint REFERENCES simple.user (id),
+    user_id bigint,
+    username text,
     date timestamp DEFAULT CURRENT_TIMESTAMP,
     details text
+
+    FOREIGN KEY (user_id, user_login_name) REFERENCES simple.user (id, login_name)
 );
 
 -- D.   ORGANIZATIONS
