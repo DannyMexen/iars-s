@@ -17,15 +17,15 @@ Notes:  For best results
     -- A. Stand-alone
     1. notification
     2. change_reason
-    -- B. Logs
-    1. event
-    2. log
-    -- C. Users
+    -- B. Users
     1. role
     2. user_department
     3. user_account_status
     4. user_account
     5. user_person
+    -- C. Logs
+    1. event
+    2. log
     -- D. Organizations
     1. province
     2. city
@@ -80,12 +80,22 @@ CREATE TABLE IF NOT EXISTS simple.change_reason (
     description text NOT NULL
 );
 
--- B.   LOG AND EVENTS
+-- C.   LOG AND EVENTS
 CREATE TABLE IF NOT EXISTS simple.event (
     id bigserial PRIMARY KEY,
     name text,
     description text
 );
+
+-- TODO: Uncomment after user_person table is created
+/*
+CREATE TABLE IF NOT EXISTS simple.log (
+    id bigserial PRIMARY KEY,
+    event_id bigint REFERENCES simple.event (id),
+    user_person_id bigint REFEENCES simple.user_person (id),
+    details text
+);
+*/
 
 -- E.   Invoices and Receipts
 CREATE TABLE IF NOT EXISTS simple.invoice (
