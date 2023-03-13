@@ -222,3 +222,19 @@ CREATE TABLE IF NOT EXISTS simple.invoice_item (
     PRIMARY KEY (id, item_number),
     FOREIGN KEY (invoice_id, invoice_number) REFERENCES simple.invoice (id, invoice_number)
 );
+
+CREATE TABLE IF NOT EXISTS simple.receipt (
+    id bigserial,
+    receipt_number text,
+    invoice_id bigint NOT NULL,
+    invoice_number text NOT NULL,
+    paid_date date NOT NULL,
+    issue_date date DEFAULT CURRENT_DATE NOT_NULL,
+
+    PRIMARY KEY (id, receipt_number),
+    FOREIGN KEY (invoice_id, invoice_number) REFERENCES simple.invoice (id, invoice_number) 
+);
+
+CREATE TABLE IF NOT EXISTS simple.receipt_item (
+
+);
