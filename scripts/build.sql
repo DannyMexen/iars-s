@@ -120,7 +120,7 @@ CREATE TABLE IF NOT EXISTS simple.log (
     id bigserial PRIMARY KEY,
     event_id bigint REFERENCES simple.event (id),
     user_id bigint,
-    username text,
+    user_login_name text,
     date timestamp DEFAULT CURRENT_TIMESTAMP,
     details text,
 
