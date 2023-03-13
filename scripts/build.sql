@@ -5,6 +5,9 @@ Date: 2023-03-09 Thursday
 Description: Build script for IaRS-SE. It contains CREATE statements for a fully
              relational schema to store invoicing and receipting data
 VERSION: 0.1.0
+Notes:  For best results
+        1. Run this in psql environment
+        2. postgres (default database) is a convenience (see DROP statements below)
 */
 
 /*
@@ -42,7 +45,7 @@ VERSION: 0.1.0
 */
 DROP TABLE IF EXISTS simple.notification, simple.change_reason, simple.invoice;
 DROP SCHEMA IF EXISTS simple;
--- connect to any other database of your choice
+-- connect to any other database of your choice to accommodate DROP statement below (is this a hack?)
 \connect postgres
 DROP DATABASE IF EXISTS iars_test;
 
