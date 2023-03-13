@@ -155,7 +155,21 @@ CREATE TABLE IF NOT EXISTS simple.amws (
     tpin text
 ) INHERITS (client);
 
--- E.   Invoices and Receipts
+-- E.   INVOICES AND RECEIPTS
+CREATE TABLE IF NOT EXISTS simple.bank_account_type (
+    id bigserial PRIMARY KEY,
+    name text NOT NULL UNIQUE
+);
+
+
+CREATE TABLE IF NOT EXISTS simple.bank (
+    id bigserial PRIMARY KEY,
+    name text NOT NULL,
+    account_type_id bigint REFERENCES bank_account_type (id),
+    swift_code text NOT NULL UNIQUE,
+    branch_name text NOT NULL
+);
+
 CREATE TABLE IF NOT EXISTS simple.invoice (
     id bigserial,
     invoice_number text,
