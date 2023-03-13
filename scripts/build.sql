@@ -188,10 +188,6 @@ CREATE TABLE IF NOT EXISTS simple.invoice (
     id bigserial,
     invoice_number text,
     total_amount money NOT NULL,
-CREATE TABLE IF NOT EXISTS simple.invoice (
-    id bigserial,
-    invoice_number text,
-    total_amount money NOT NULL,
     payment_condition_id bigserial NOT NULL,
     bank_id bigint NOT NULL,
     issue_date timestamp NOT NULL,
