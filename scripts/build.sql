@@ -85,14 +85,14 @@ CREATE TABLE IF NOT EXISTS simple.change_reason (
 -- B.   USERS
 CREATE TABLE IF NOT EXISTS simple.user_role (
     id bigserial PRIMARY KEY,
-    name text DEFAULT 'STANDARD' UNIQUE,
+    name text DEFAULT 'STANDARD' NOT NULL UNIQUE,
     description text NOT NULL UNIQUE
 );
 
 
 CREATE TABLE IF NOT EXISTS simple.user_account_status (
     id bigserial PRIMARY KEY,
-    name text DEFAULT 'ACTIVE' UNIQUE,
+    name text DEFAULT 'ACTIVE' NOT NULL UNIQUE,
     description text NOT NULL UNIQUE
 );
 
@@ -100,8 +100,8 @@ CREATE TABLE IF NOT EXISTS simple.user (
     id bigserial,
     login_name text, 
     password_hash text NOT NULL,
-    user_account_status_id bigint REFERENCES simple.user_account_status (id),
-    user_role_id bigint REFERENCES simple.user_role (id),
+    user_account_status_id bigint NOT NULL REFERENCES simple.user_account_status (id),
+    user_role_id bigint NOT NULL REFERENCES simple.user_role (id),
     first_name text NOT NULL,
     last_name text NOT NULL,
     phone_number text NOT NULL UNIQUE,
@@ -112,15 +112,15 @@ CREATE TABLE IF NOT EXISTS simple.user (
 -- C.   LOG AND EVENTS
 CREATE TABLE IF NOT EXISTS simple.event (
     id bigserial PRIMARY KEY,
-    name text,
-    description text
+    name text NOT NULL UNIQUE,
+    description text NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS simple.log (
     id bigserial PRIMARY KEY,
-    event_id bigint REFERENCES simple.event (id),
-    user_id bigint,
-    user_login_name text,
+    event_id bigint NOT NULL REFERENCES simple.event (id),
+    user_id bigint NOT NULL,
+    user_login_name text NOT NULL,
     date timestamp DEFAULT CURRENT_TIMESTAMP,
     details text,
 
@@ -136,7 +136,7 @@ CREATE TABLE IF NOT EXISTS simple.province (
 CREATE TABLE IF NOT EXISTS simple.city (
     id bigserial PRIMARY KEY,
     name text NOT NULL UNIQUE,
-    province_id bigint REFERENCES simple.province (id)
+    province_id bigint NOT NULL REFERENCES simple.province (id)
 );
 
 CREATE TABLE IF NOT EXISTS simple.client (
@@ -144,7 +144,7 @@ CREATE TABLE IF NOT EXISTS simple.client (
     name text NOT NULL,
     street text NOT NULL,
     area text NOT NULL,
-    city_id bigint REFERENCES simple.city (id),
+    city_id bigint NOT NULL REFERENCES simple.city (id),
     contact_first_name text NOT NULL,
     contact_last_name text NOT NULL,
     contact_email text NOT NULL UNIQUE,
@@ -152,7 +152,7 @@ CREATE TABLE IF NOT EXISTS simple.client (
 );
 
 CREATE TABLE IF NOT EXISTS simple.amws (
-    tpin text
+    tpin text NOT NULL
 ) INHERITS (client);
 
 -- E.   INVOICES AND RECEIPTS
