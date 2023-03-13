@@ -165,7 +165,7 @@ CREATE TABLE IF NOT EXISTS simple.bank_account_type (
 CREATE TABLE IF NOT EXISTS simple.bank (
     id bigserial PRIMARY KEY,
     name text NOT NULL,
-    account_type_id bigint REFERENCES bank_account_type (id),
+    account_type_id bigint NOT NULL REFERENCES bank_account_type (id),
     swift_code text NOT NULL UNIQUE,
     branch_name text NOT NULL
 );
