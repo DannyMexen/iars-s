@@ -36,12 +36,19 @@ VERSION: 0.1.0
     7. receipt
 */
 
+-- Uncomment this section to start with new database, schema and tables.
 /*
-    WARNING: DELETE THIS SECTION
+   Place the code below here 
 */
 DROP TABLE IF EXISTS simple.notification, simple.change_reason, simple.invoice;
 DROP SCHEMA IF EXISTS simple;
+DROP DATABASE IF EXISTS iars_test;
 
+/*
+    Database creation and connection
+*/
+CREATE DATABASE IF NOT EXISTS iars_test;
+\connect iars_test
 
 /*
     Schema search path - see PostgreSQL documentation for details
