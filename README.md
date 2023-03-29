@@ -7,13 +7,13 @@ This is an invoicing and receipting system primarily aimed at Zambian small busi
 
 * Invoices
 * Receipts
-* Client management
-* Notifications
 * TPIN
 
 ## Elegant Edition (Paid) Features
 
 * Everything in Simple Edition
 * Reminders
+* Notifications
 * User management
+* Client management
 
