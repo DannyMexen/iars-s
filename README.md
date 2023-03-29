@@ -7,7 +7,7 @@ This is an invoicing and receipting system primarily aimed at Zambian small busi
 
 * Invoices
 * Receipts
-* TPIN
+* TPIN management
 
 ## Elegant Edition (Paid) Features
 
