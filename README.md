@@ -16,4 +16,5 @@ This is an invoicing and receipting system primarily aimed at Zambian small busi
 * Notifications
 * User management
 * Client management
+* Reconciliation
 
