@@ -79,9 +79,13 @@ WSGI_APPLICATION = 'simple.wsgi.application'
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    "default": {
+        "ENGINE": env('ENGINE'),
+        "NAME": env('AYASE'),
+        "USER": env('AYASE'),
+        "PASSWORD": env('PASSWORD'),
+        "HOST": env('TEST'),
+        "PORT": env('PORT'),
     }
 }
 
@@ -110,7 +114,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Africa/Lusaka'
 
 USE_I18N = True
 
