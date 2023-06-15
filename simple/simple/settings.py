@@ -33,6 +33,7 @@ ALLOWED_HOSTS = [env('TEST'),]
 # Application definition
 
 INSTALLED_APPS = [
+    'aya.apps.AyaConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
