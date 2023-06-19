@@ -10,13 +10,14 @@ class Notification(models.Model):
     description = models.TextField(max_length=300)
 
 
-# Change Reasons
+# Change reasons
 class ChangeReason(models.Model):
     name = models.CharField(unique=True, max_length=100)
     description = models.TextField(max_length=300)
 
 
 # B. Users
+# User roles
 class UserRole(models.Model):
     ADMINISTRATOR = "AD"
     STANDARD = "ST"
@@ -35,6 +36,7 @@ class UserRole(models.Model):
     description = models.TextField(max_length=300, default=STD_DESCRIPTION)
 
 
+# User account statuses
 class UserAccountStatus(models.Model):
     ACTIVE = "AC"  # Enabled and in use
     INACTIVE = "IA"  # Not in use but accessible
@@ -54,6 +56,7 @@ class UserAccountStatus(models.Model):
     description = models.TextField(max_length=300)
 
 
+# Users
 class User(models.Model):
     login_name = models.CharField(max_length=100, unique=True)
     password_hash = models.TextField(max_length=500, unique=True)
@@ -64,3 +67,9 @@ class User(models.Model):
     phone_number = models.CharField(max_length=13, unique=True) # TODO: PhoneNumberField
     email = models.EmailField(max_length=254, unique=True)
 
+ # C. Log and Events
+ # Log
+
+class Log(models.Model):
+    name = models.CharField(unique=True, max_length=100)
+    description = models.TextField(max_length=300)
