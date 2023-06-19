@@ -114,3 +114,8 @@ class Province(models.Model):
         choices=PROVINCE_CHOICES,
         default=CENTRAL
     )
+
+# Cities
+class City(models.Model):
+    name = models.CharField(max_length=100, unique=True)
+    province = models.ForeignKey(Province, on_delete=models.CASCADE)
