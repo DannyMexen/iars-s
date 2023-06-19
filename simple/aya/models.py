@@ -1,4 +1,7 @@
+import datetime
+
 from django.db import models
+from django.utils import timezone
 
 # Create your models here.
 
@@ -175,3 +178,12 @@ class Service(models.Model):
     name = models.CharField(max_length=100, unique=True) # TODO: choices!
     description = models.TextField(max_length=300)
     cost = models.DecimalField(max_digits=6, decimal_places=4)
+
+# Invoice
+class Invoice(models.Model):
+    invoice_number = models.CharField(max_length=10, unique=True)
+    total_amount = models.DecimalField(max_digits=6, decimal_places=4)
+    payment_condition_id = models.ForeignKey(PaymentCondition, on_delete=models.RESTRICT)
+    bank_id = models.ForeignKey(Bank, on_delete=models.RESTRICT)
+    issue_date = models.DateTimeField(auto_now=True)
+    due_date = models.DateTimeField(default=timezone.now() + datetime.timedelta(days=30))
