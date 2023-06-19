@@ -1,3 +1,4 @@
 .DS_Store
 simple/db.sqlite3
 simple/.env
+.vscode/
