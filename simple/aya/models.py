@@ -169,3 +169,9 @@ class Bank(models.Model):
 class PaymentCondition(models.Model):
     name = models.CharField(max_length=150, unique=True) # TODO: choices!
     description = models.TextField(max_length=300)
+
+# Service
+class Service(models.Model):
+    name = models.CharField(max_length=150, unique=True) # TODO: choices!
+    description = models.TextField(max_length=300)
+    cost = models.DecimalField(max_digits=6, decimal_places=4)
