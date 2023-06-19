@@ -74,3 +74,11 @@ class Event(models.Model):
     name = models.CharField(unique=True, max_length=100)
     description = models.TextField(max_length=300)
 
+class Log(models.Model):
+    EVENT_ID = 0
+    event_id = models.ForeignKey(Event, on_delete=models.RESTRICT, default=EVENT_ID)
+    USER_ID = 0
+    user_id = models.ForeignKey(User, on_delete=models.RESTRICT, default=USER_ID)
+    date = models.DateTimeField(auto_now=True)
+    EVENT = "Event Logged " + str(date)
+    details = models.TextField(max_length=400, default=EVENT)
