@@ -83,7 +83,7 @@ class Log(models.Model):
     event_id = models.ForeignKey(Event, on_delete=models.RESTRICT, default=EVENT_ID)
     USER_ID = 0
     user_id = models.ForeignKey(User, on_delete=models.RESTRICT, default=USER_ID)
-    date = models.DateTimeField(auto_now=True)
+    date = models.DateTimeField(auto_now_add=True)
     EVENT = "Event Logged " + str(date)
     details = models.TextField(max_length=400, default=EVENT)
 
@@ -137,7 +137,7 @@ class Client(models.Model):
 # AMWS (replace with your own organization's name)
 class ArcariusMexen(models.Model):
     name = models.CharField(max_length=200)
-    tpin = models.CharField(max_length=15)
+    tpin = models.CharField(max_length=10)
     street = models.CharField(max_length=100)
     area = models.CharField(max_length=100)
     city_id = models.ForeignKey(City, on_delete=models.RESTRICT) # TODO: Consider SET DEFAULT
@@ -185,7 +185,7 @@ class Invoice(models.Model):
     total_amount = models.DecimalField(max_digits=6, decimal_places=4)
     payment_condition_id = models.ForeignKey(PaymentCondition, on_delete=models.RESTRICT)
     bank_id = models.ForeignKey(Bank, on_delete=models.RESTRICT)
-    issue_date = models.DateTimeField(auto_now=True)
+    issue_date = models.DateTimeField(auto_now_add=True)
     due_date = models.DateTimeField(default=timezone.now() + datetime.timedelta(days=30))
 
 # Invoice items
@@ -196,3 +196,9 @@ class InvoiceItem(models.Model):
     quantity = models.IntegerField()
     AMOUNT = 0
     total_amount = models.DecimalField(max_digits=6, decimal_places=4, default=AMOUNT)
+
+# Receipt
+class Receipt(models.Model):
+    receipt_number = models.CharField(max_length=10, unique=True)
+    invoice_id = models.ForeignKey(Invoice, on_delete=models.CASCADE)
+    date = models.DateTimeField(auto_now_add=True)
