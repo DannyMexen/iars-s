@@ -6,14 +6,14 @@ from django.db import models
 # A. Standalone tables - no relationships
 # Notifications
 class Notification(models.Model):
-    name = models.CharField(unique=True, max_length=100, null=False)
-    description = models.TextField(max_length=300, null=False)
+    name = models.CharField(unique=True, max_length=100)
+    description = models.TextField(max_length=300)
 
 
 # Change Reasons
 class ChangeReason(models.Model):
-    name = models.CharField(unique=True, max_length=100, null=False)
-    description = models.TextField(max_length=300, null=False)
+    name = models.CharField(unique=True, max_length=100)
+    description = models.TextField(max_length=300)
 
 
 # B. Users
@@ -30,7 +30,9 @@ class UserRole(models.Model):
         choices=ROLE_CHOICES,
     )
 
-    description = models.TextField(max_length=300, null=False)
+    STD_DESCRIPTION = "Standard user - core system access privileges."
+    # ADMIN_DESCRIPTION = "Administrator  - elevated system access privileges."
+    description = models.TextField(max_length=300, default=STD_DESCRIPTION)
 
 
 class UserAccountStatus(models.Model):
@@ -49,7 +51,7 @@ class UserAccountStatus(models.Model):
         default=ACTIVE,
         choices=ACCOUNT_STATUS_CHOICES,
     )
-    description = models.TextField(max_length=300, null=False)
+    description = models.TextField(max_length=300)
 
 
 class User(models.Model):
