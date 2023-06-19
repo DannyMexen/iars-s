@@ -68,12 +68,13 @@ class User(models.Model):
     email = models.EmailField(max_length=254, unique=True)
 
  # C. Log and Events
- # Log
+ # Event
 
 class Event(models.Model):
     name = models.CharField(unique=True, max_length=100)
     description = models.TextField(max_length=300)
 
+# Log
 class Log(models.Model):
     EVENT_ID = 0
     event_id = models.ForeignKey(Event, on_delete=models.RESTRICT, default=EVENT_ID)
@@ -82,3 +83,34 @@ class Log(models.Model):
     date = models.DateTimeField(auto_now=True)
     EVENT = "Event Logged " + str(date)
     details = models.TextField(max_length=400, default=EVENT)
+
+# D. Organizations
+# Provinces
+class Province(models.Model):
+    # Source (Not Secure) - http://www.statoids.com/uzm.html
+    CENTRAL = "CE"
+    COPPERBELT = "CO"
+    EASTERN = "ES"
+    LUAPULA = "LP"
+    LUSAKA = "LS"
+    MUCHINGA = "MU"
+    NORTHERN = "NR"
+    NORTH_WESTERN = "NW"
+    WESTERN = "WE"
+    SOUTHERN = "SO"
+    PROVINCE_CHOICES = [
+        (CENTRAL, "Central"),
+        (COPPERBELT, "Copperbelt"),
+        (EASTERN, "Eastern"),
+        (LUAPULA, "Luapula"),
+        (LUSAKA, "Lusaka"),
+        (MUCHINGA, "Muchinga"),
+        (NORTHERN, "Northern"),
+        (NORTH_WESTERN, "North Western"),
+        (WESTERN, "Western"),
+        (SOUTHERN, "Southern")
+    ]
+    name = models.CharField(
+        choices=PROVINCE_CHOICES,
+        default=CENTRAL
+    )
