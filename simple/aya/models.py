@@ -119,3 +119,14 @@ class Province(models.Model):
 class City(models.Model):
     name = models.CharField(max_length=100, unique=True)
     province = models.ForeignKey(Province, on_delete=models.CASCADE)
+
+# Clients
+class Client(models.Model):
+    name = models.CharField(max_length=200)
+    street = models.CharField(max_length=100)
+    area = models.CharField(max_length=100)
+    city_id = models.ForeignKey(City, on_delete=models.RESTRICT) # TODO: Consider SET DEFAULT
+    contact_first_name = models.CharField(max_length=100)
+    contact_last_name = models.CharField(max_length=100)
+    contact_phone_number = models.CharField(max_length=13, unique=True)
+    contact_email = models.EmailField(max_length=254, unique=True)
