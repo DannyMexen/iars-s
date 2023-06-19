@@ -157,3 +157,10 @@ class BankAccountType(models.Model):
         default=CURRENT,
         unique=True,
     )
+
+# Banks
+class Bank(models.Model):
+    name = models.CharField(max_length=200)
+    account_type_id = models.ForeignKey(BankAccountType, on_delete=models.RESTRICT)
+    swift_code = models.CharField(max_length=11, unique=True)
+    branch_name = models.CharField(max_length=100)
