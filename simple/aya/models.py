@@ -70,6 +70,7 @@ class User(models.Model):
  # C. Log and Events
  # Log
 
-class Log(models.Model):
+class Event(models.Model):
     name = models.CharField(unique=True, max_length=100)
     description = models.TextField(max_length=300)
+
