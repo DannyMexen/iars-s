@@ -172,6 +172,6 @@ class PaymentCondition(models.Model):
 
 # Service
 class Service(models.Model):
-    name = models.CharField(max_length=150, unique=True) # TODO: choices!
+    name = models.CharField(max_length=100, unique=True) # TODO: choices!
     description = models.TextField(max_length=300)
     cost = models.DecimalField(max_digits=6, decimal_places=4)
