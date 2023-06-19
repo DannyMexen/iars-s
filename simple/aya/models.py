@@ -187,3 +187,12 @@ class Invoice(models.Model):
     bank_id = models.ForeignKey(Bank, on_delete=models.RESTRICT)
     issue_date = models.DateTimeField(auto_now=True)
     due_date = models.DateTimeField(default=timezone.now() + datetime.timedelta(days=30))
+
+# Invoice items
+class InvoiceItem(models.Model):
+    item_number = models.CharField(max_length=10, unique=True)
+    invoice_id = models.ForeignKey(Invoice, on_delete=models.CASCADE)
+    service_id = models.ForeignKey(Service, on_delete=models.RESTRICT)
+    quantity = models.IntegerField()
+    AMOUNT = 0
+    total_amount = models.DecimalField(max_digits=6, decimal_places=4, default=AMOUNT)
