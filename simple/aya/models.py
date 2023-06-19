@@ -164,3 +164,8 @@ class Bank(models.Model):
     account_type_id = models.ForeignKey(BankAccountType, on_delete=models.RESTRICT)
     swift_code = models.CharField(max_length=11, unique=True)
     branch_name = models.CharField(max_length=100)
+
+# Payment conditions
+class PaymentCondition(models.Model):
+    name = models.CharField(max_length=150, unique=True) # TODO: choices!
+    description = models.TextField(max_length=300)
