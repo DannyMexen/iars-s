@@ -142,3 +142,18 @@ class ArcariusMexen(models.Model):
     contact_last_name = models.CharField(max_length=100)
     contact_phone_number = models.CharField(max_length=13, unique=True)
     contact_email = models.EmailField(max_length=254, unique=True)
+
+# E. Invoices and Receipts
+# Bank account types
+class BankAccountType(models.Model):
+    CURRENT = "CU"
+    SAVINGS = "SA"
+    ACCOUNT_TYPE_CHOICES = [
+        (CURRENT, "Current"),
+        (SAVINGS, "Savings"),
+    ]
+    name = models.CharField(
+        choices=ACCOUNT_TYPE_CHOICES,
+        default=CURRENT,
+        unique=True,
+    )
