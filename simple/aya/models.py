@@ -64,7 +64,7 @@ class User(models.Model):
     login_name = models.CharField(max_length=100, unique=True)
     password_hash = models.TextField(max_length=500, unique=True)
     user_account_status_id = models.ForeignKey(UserAccountStatus, on_delete=models.RESTRICT)
-    user_role_id = models.ForeignKey(UserRole, on_delete=models.RESTRICT)
+    user_role = models.ForeignKey(UserRole, on_delete=models.RESTRICT)
     first_name = models.CharField(max_length=100) 
     last_name = models.CharField(max_length=100) 
     phone_number = models.CharField(max_length=13, unique=True) # TODO: PhoneNumberField
@@ -80,9 +80,9 @@ class Event(models.Model):
 # Log
 class Log(models.Model):
     EVENT_ID = 0
-    event_id = models.ForeignKey(Event, on_delete=models.RESTRICT, default=EVENT_ID)
+    event = models.ForeignKey(Event, on_delete=models.RESTRICT, default=EVENT_ID)
     USER_ID = 0
-    user_id = models.ForeignKey(User, on_delete=models.RESTRICT, default=USER_ID)
+    user = models.ForeignKey(User, on_delete=models.RESTRICT, default=USER_ID)
     date = models.DateTimeField(auto_now_add=True)
     EVENT = "Event Logged " + str(date)
     details = models.TextField(max_length=400, default=EVENT)
@@ -128,7 +128,7 @@ class Client(models.Model):
     name = models.CharField(max_length=200)
     street = models.CharField(max_length=100)
     area = models.CharField(max_length=100)
-    city_id = models.ForeignKey(City, on_delete=models.RESTRICT) # TODO: Consider SET DEFAULT
+    city = models.ForeignKey(City, on_delete=models.RESTRICT) # TODO: Consider SET DEFAULT
     contact_first_name = models.CharField(max_length=100)
     contact_last_name = models.CharField(max_length=100)
     contact_phone_number = models.CharField(max_length=13, unique=True)
@@ -140,7 +140,7 @@ class ArcariusMexen(models.Model):
     tpin = models.CharField(max_length=10)
     street = models.CharField(max_length=100)
     area = models.CharField(max_length=100)
-    city_id = models.ForeignKey(City, on_delete=models.RESTRICT) # TODO: Consider SET DEFAULT
+    city = models.ForeignKey(City, on_delete=models.RESTRICT) # TODO: Consider SET DEFAULT
     contact_first_name = models.CharField(max_length=100)
     contact_last_name = models.CharField(max_length=100)
     contact_phone_number = models.CharField(max_length=13, unique=True)
@@ -164,7 +164,7 @@ class BankAccountType(models.Model):
 # Banks
 class Bank(models.Model):
     name = models.CharField(max_length=200)
-    account_type_id = models.ForeignKey(BankAccountType, on_delete=models.RESTRICT)
+    account_type = models.ForeignKey(BankAccountType, on_delete=models.RESTRICT)
     swift_code = models.CharField(max_length=11, unique=True)
     branch_name = models.CharField(max_length=100)
 
@@ -183,16 +183,16 @@ class Service(models.Model):
 class Invoice(models.Model):
     invoice_number = models.CharField(max_length=10, unique=True)
     total_amount = models.DecimalField(max_digits=6, decimal_places=4)
-    payment_condition_id = models.ForeignKey(PaymentCondition, on_delete=models.RESTRICT)
-    bank_id = models.ForeignKey(Bank, on_delete=models.RESTRICT)
+    payment_condition = models.ForeignKey(PaymentCondition, on_delete=models.RESTRICT)
+    bank = models.ForeignKey(Bank, on_delete=models.RESTRICT)
     issue_date = models.DateTimeField(auto_now_add=True)
     due_date = models.DateTimeField(default=timezone.now() + datetime.timedelta(days=30))
 
 # Invoice items
 class InvoiceItem(models.Model):
     item_number = models.CharField(max_length=10, unique=True)
-    invoice_id = models.ForeignKey(Invoice, on_delete=models.CASCADE)
-    service_id = models.ForeignKey(Service, on_delete=models.RESTRICT)
+    invoice = models.ForeignKey(Invoice, on_delete=models.CASCADE)
+    service = models.ForeignKey(Service, on_delete=models.RESTRICT)
     quantity = models.IntegerField()
     AMOUNT = 0
     total_amount = models.DecimalField(max_digits=6, decimal_places=4, default=AMOUNT)
@@ -200,11 +200,11 @@ class InvoiceItem(models.Model):
 # Receipts
 class Receipt(models.Model):
     receipt_number = models.CharField(max_length=10, unique=True)
-    invoice_id = models.ForeignKey(Invoice, on_delete=models.CASCADE)
+    invoice = models.ForeignKey(Invoice, on_delete=models.CASCADE)
     date = models.DateTimeField(auto_now_add=True)
 
 # Receipt items
 class ReceiptItems(models.Model):
     receipt_number = models.CharField(max_length=10, unique=True)
-    invoice_id = models.ForeignKey(Invoice, on_delete=models.CASCADE)
-    invoice_item_id = models.ForeignKey(InvoiceItem, on_delete=models.CASCADE)
+    invoice = models.ForeignKey(Invoice, on_delete=models.CASCADE)
+    invoice_item = models.ForeignKey(InvoiceItem, on_delete=models.CASCADE)
