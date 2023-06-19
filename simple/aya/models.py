@@ -197,8 +197,14 @@ class InvoiceItem(models.Model):
     AMOUNT = 0
     total_amount = models.DecimalField(max_digits=6, decimal_places=4, default=AMOUNT)
 
-# Receipt
+# Receipts
 class Receipt(models.Model):
     receipt_number = models.CharField(max_length=10, unique=True)
     invoice_id = models.ForeignKey(Invoice, on_delete=models.CASCADE)
     date = models.DateTimeField(auto_now_add=True)
+
+# Receipt items
+class ReceiptItems(models.Model):
+    receipt_number = models.CharField(max_length=10, unique=True)
+    invoice_id = models.ForeignKey(Invoice, on_delete=models.CASCADE)
+    invoice_item_id = models.ForeignKey(InvoiceItem, on_delete=models.CASCADE)
