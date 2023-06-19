@@ -130,3 +130,15 @@ class Client(models.Model):
     contact_last_name = models.CharField(max_length=100)
     contact_phone_number = models.CharField(max_length=13, unique=True)
     contact_email = models.EmailField(max_length=254, unique=True)
+
+# AMWS (replace with your own organization's name)
+class ArcariusMexen(models.Model):
+    name = models.CharField(max_length=200)
+    tpin = models.CharField(max_length=15)
+    street = models.CharField(max_length=100)
+    area = models.CharField(max_length=100)
+    city_id = models.ForeignKey(City, on_delete=models.RESTRICT) # TODO: Consider SET DEFAULT
+    contact_first_name = models.CharField(max_length=100)
+    contact_last_name = models.CharField(max_length=100)
+    contact_phone_number = models.CharField(max_length=13, unique=True)
+    contact_email = models.EmailField(max_length=254, unique=True)
