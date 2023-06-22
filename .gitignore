@@ -3,4 +3,8 @@ simple/db.sqlite3
 simple/.env
 .vscode/
 simple/*/__pycache__/
+<<<<<<< HEAD
 simple/*/*/__pycache__/
+=======
+simple/*/*/__pycache__/
+>>>>>>> test
