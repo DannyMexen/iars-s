@@ -2,6 +2,5 @@
 simple/db.sqlite3
 simple/.env
 .vscode/
-simple/simple/__pycache__/
-simple/aya/__pycache__/
-simple/aya/migrations/__pycache__/
+simple/*/__pycache__/
+simple/*/*/__pycache__/
