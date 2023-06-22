@@ -226,12 +226,16 @@ CREATE TABLE IF NOT EXISTS simple.invoice_item (
 =======
     issue_date date DEFAULT CURRENT_DATE NOT NULL,
 
+<<<<<<< HEAD
     PRIMARY KEY (id, item_number)
 <<<<<<< HEAD
 <<<<<<< HEAD
 );
 >>>>>>> 4fff747 (added PK)
 =======
+=======
+    PRIMARY KEY (id, item_number),
+>>>>>>> 1799424 (syntax error)
     FOREIGN KEY (invoice_id, invoice_number) REFERENCES simple.invoice (id, invoice_number)
 );
 >>>>>>> cb31a37 (fixed constraint issue between invoice and invoice_item)
