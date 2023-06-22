@@ -213,11 +213,18 @@ CREATE TABLE IF NOT EXISTS simple.invoice (
 CREATE TABLE IF NOT EXISTS simple.invoice_item (
     id bigserial,
     item_number text,
-    invoice_number NOT NULL REFERENCES simple.invoice (invoice_number),
+    invoice_number text NOT NULL REFERENCES simple.invoice (invoice_number),
     service_id bigint NOT NULL REFERENCES simple.service (id),
     quantity int NOT NULL,
     total_amount money NOT NULL,
     due_date date NOT NULL,
+<<<<<<< HEAD
     issue_date date DEFAULT CURRENT_DATE NOT NULL
 );
 >>>>>>> 90c30f2 (added invoice item table)
+=======
+    issue_date date DEFAULT CURRENT_DATE NOT NULL,
+
+    PRIMARY KEY (id, item_number)
+);
+>>>>>>> 4fff747 (added PK)
