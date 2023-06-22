@@ -218,6 +218,7 @@ CREATE TABLE IF NOT EXISTS simple.invoice_item (
     service_id bigint NOT NULL REFERENCES simple.service (id),
     quantity int NOT NULL,
     total_amount money NOT NULL,
+<<<<<<< HEAD
     due_date date NOT NULL,
 <<<<<<< HEAD
     issue_date date DEFAULT CURRENT_DATE NOT NULL
@@ -225,6 +226,8 @@ CREATE TABLE IF NOT EXISTS simple.invoice_item (
 >>>>>>> 90c30f2 (added invoice item table)
 =======
     issue_date date DEFAULT CURRENT_DATE NOT NULL,
+=======
+>>>>>>> dcc850b (added receipt item table)
 
 <<<<<<< HEAD
     PRIMARY KEY (id, item_number)
@@ -259,6 +262,19 @@ CREATE TABLE IF NOT EXISTS simple.receipt (
 );
 
 CREATE TABLE IF NOT EXISTS simple.receipt_item (
+    id bigint,
+    item_number text,
+    receipt_id bigint NOT NULL,
+    receipt_number text NOT NULL,
+    invoice_item_id bigint NOT NULL,
+    invoice_item_number text NOT NULL, 
 
+<<<<<<< HEAD
 );
 >>>>>>> 9a28dce (added receipt table)
+=======
+    PRIMARY KEY (id, item_number),
+    FOREIGN KEY (receipt_id, receipt_number) REFERENCES simple.receipt (id, receipt_number),
+    FOREIGN KEY (invoice_item_id, invoice_item_number) REFERENCES simple.invoice_item (id, item_number)
+);
+>>>>>>> dcc850b (added receipt item table)
