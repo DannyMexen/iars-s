@@ -238,8 +238,27 @@ CREATE TABLE IF NOT EXISTS simple.invoice_item (
 >>>>>>> 1799424 (syntax error)
     FOREIGN KEY (invoice_id, invoice_number) REFERENCES simple.invoice (id, invoice_number)
 );
+<<<<<<< HEAD
 >>>>>>> cb31a37 (fixed constraint issue between invoice and invoice_item)
 =======
     FOREIGN KEY (invoice_id, invoice_number) REFERENCES simple.invoice (id, invoice_number)
 );
 >>>>>>> 80af40c (fixed constraint issue between invoice and invoice_item)
+=======
+
+CREATE TABLE IF NOT EXISTS simple.receipt (
+    id bigserial,
+    receipt_number text,
+    invoice_id bigint NOT NULL,
+    invoice_number text NOT NULL,
+    paid_date date NOT NULL,
+    issue_date date DEFAULT CURRENT_DATE NOT_NULL,
+
+    PRIMARY KEY (id, receipt_number),
+    FOREIGN KEY (invoice_id, invoice_number) REFERENCES simple.invoice (id, invoice_number) 
+);
+
+CREATE TABLE IF NOT EXISTS simple.receipt_item (
+
+);
+>>>>>>> 9a28dce (added receipt table)
