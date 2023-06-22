@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import datetime
 
 from django.db import models
@@ -208,3 +209,8 @@ class ReceiptItems(models.Model):
     receipt_number = models.CharField(max_length=10, unique=True)
     invoice = models.ForeignKey(Invoice, on_delete=models.CASCADE)
     invoice_item = models.ForeignKey(InvoiceItem, on_delete=models.CASCADE)
+=======
+from django.db import models
+
+# Create your models here.
+>>>>>>> f00e79f (# This is a combination of 6 commits.)
