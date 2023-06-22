@@ -1,0 +1,6 @@
+.DS_Store
+simple/db.sqlite3
+simple/.env
+.vscode/
+simple/*/__pycache__/
+simple/*/*/__pycache__/

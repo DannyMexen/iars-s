@@ -153,17 +153,8 @@ CREATE TABLE IF NOT EXISTS simple.client (
 
 
 CREATE TABLE IF NOT EXISTS simple.amws (
-    id bigserial PRIMARY KEY,
-    name text NOT NULL,
-    tpin text NOT NULL,
-    street text NOT NULL,
-    area text NOT NULL,
-    city_id bigint NOT NULL REFERENCES simple.city (id),
-    contact_first_name text NOT NULL,
-    contact_last_name text NOT NULL,
-    contact_email text NOT NULL UNIQUE,
-    contact_phone_number text NOT NULL UNIQUE
-);
+    tpin text NOT NULL
+) INHERITS (client);
 
 -- E.   INVOICES AND RECEIPTS
 CREATE TABLE IF NOT EXISTS simple.bank_account_type (
@@ -206,32 +197,6 @@ CREATE TABLE IF NOT EXISTS simple.invoice (
     amws_id bigint NOT NULL REFERENCES simple.amws (id),
 
     PRIMARY KEY (id, invoice_number)
-);
-
-CREATE TABLE IF NOT EXISTS simple.invoice_item (
-    id bigserial,
-    item_number text,
-    invoice_id bigint NOT NULL,
-    invoice_number text NOT NULL,
-    service_id bigint NOT NULL REFERENCES simple.service (id),
-    quantity int NOT NULL,
-    total_amount money NOT NULL,
-
-    PRIMARY KEY (id, item_number),
-    FOREIGN KEY (invoice_id, invoice_number) REFERENCES simple.invoice (id, invoice_number)
-);
-
-CREATE TABLE IF NOT EXISTS simple.receipt (
-    id bigserial,
-    receipt_number text,
-    invoice_id bigint NOT NULL,
-    invoice_number text NOT NULL,
-    paid_date date NOT NULL,
-    issue_date date DEFAULT CURRENT_DATE NOT NULL,
-
-    PRIMARY KEY (id, receipt_number),
-    FOREIGN KEY (invoice_id, invoice_number) REFERENCES simple.invoice (id, invoice_number) 
-);
 
 CREATE TABLE IF NOT EXISTS simple.receipt_item (
     id bigint,
@@ -241,7 +206,5 @@ CREATE TABLE IF NOT EXISTS simple.receipt_item (
     invoice_item_id bigint NOT NULL,
     invoice_item_number text NOT NULL, 
 
-    PRIMARY KEY (id, item_number),
-    FOREIGN KEY (receipt_id, receipt_number) REFERENCES simple.receipt (id, receipt_number),
-    FOREIGN KEY (invoice_item_id, invoice_item_number) REFERENCES simple.invoice_item (id, item_number)
 );
+>>>>>>> dcc850b (added receipt item table)
