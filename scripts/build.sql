@@ -228,9 +228,14 @@ CREATE TABLE IF NOT EXISTS simple.invoice_item (
 
     PRIMARY KEY (id, item_number)
 <<<<<<< HEAD
+<<<<<<< HEAD
 );
 >>>>>>> 4fff747 (added PK)
 =======
     FOREIGN KEY (invoice_id, invoice_number) REFERENCES simple.invoice (id, invoice_number)
 );
 >>>>>>> cb31a37 (fixed constraint issue between invoice and invoice_item)
+=======
+    FOREIGN KEY (invoice_id, invoice_number) REFERENCES simple.invoice (id, invoice_number)
+);
+>>>>>>> 80af40c (fixed constraint issue between invoice and invoice_item)
