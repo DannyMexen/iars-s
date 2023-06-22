@@ -207,8 +207,4 @@ class Receipt(models.Model):
 class ReceiptItems(models.Model):
     receipt_number = models.CharField(max_length=10, unique=True)
     invoice = models.ForeignKey(Invoice, on_delete=models.CASCADE)
-<<<<<<< HEAD
     invoice_item = models.ForeignKey(InvoiceItem, on_delete=models.CASCADE)
-=======
-    invoice_item = models.ForeignKey(InvoiceItem, on_delete=models.CASCADE)
->>>>>>> test
