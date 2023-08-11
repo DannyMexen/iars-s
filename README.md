@@ -3,7 +3,7 @@
 
 ![Invoice menu](/screenshots/Invoice.png)
 
-Aya (Invoicing and Receipting Simple Edition) is an invoicing and receipting system primarily aimed at Zambian small businesses and tertiary education institutions.
+Aya SE (Invoicing and Receipting Simple Edition) is an invoicing and receipting system primarily aimed at Zambian small businesses and tertiary education institutions.
 
 ## Main Goals
 * Robust invoice and receipt generation system for small businesses at no cost.
