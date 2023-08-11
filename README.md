@@ -20,6 +20,7 @@ Aya (Invoicing and Receipting Simple Edition) is an invoicing and receipting sys
 * Receipt Generation
 
 ## Screenshots
+![Login](/screenshots/Login.png) ![Dashboard](/screenshots/Dashboard.png) ![New Invoice](/screenshots/Invoice%20-%20New%20Invoice.png)
 
 ## Elegant Edition (Paid) Features (Coming 2024)
 
